@@ -18,7 +18,7 @@ function [x_result, y_result] = spline_3_0(x, y)
         coeffs = linsolve(A, b);
         x_result_tmp = x(counter) : 0.05 : x(counter + 3);
         x_result = [x_result x_result_tmp];     
-        y_result_tmp = coeffs(1) .* x_result_tmp .^ 3 + coeffs(2) .* x_result_tmp .^ 2 + coeffs(3) .* x_result_tmp + coeffs(4);
+        y_result_tmp = coeffs(1) .* x_result_tmp.^3 + coeffs(2) .* x_result_tmp.^2 + coeffs(3) .* x_result_tmp + coeffs(4);
         y_result = [y_result y_result_tmp];
         counter = counter + 3;
     end

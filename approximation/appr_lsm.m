@@ -12,13 +12,13 @@ function [x_result, y_result] = appr_lsm(x, y, n)
     end
     b = zeros(n + 1, 1);
     for i = 1:n + 1
-        b(i) = sum(y.*(x.^(i - 1)));
+        b(i) = sum(y .* (x.^(i - 1)));
     end
     a = linsolve(A, b);
     x_result = x(1):.01:x(length(x));
     y_result = zeros(size(x_result));
     for i = 1:n + 1
-        y_result = y_result + a(i).*x_result.^(i - 1);
+        y_result = y_result + a(i) .* x_result.^(i - 1);
     end
 end
 

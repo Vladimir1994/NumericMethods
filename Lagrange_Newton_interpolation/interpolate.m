@@ -8,7 +8,7 @@ y_func = F(x_func); %функция
 
 x_preset_optimal = zeros(length(x_preset), 1); %оптимальные узлы
 for i = 1:length(x_preset)
-    x_preset_optimal(i) = 0.5*((x_func(length(x_func)) - x_func(1))*cos((2*i + 1)/(2*(length(x_preset) + 1))*pi) + (x_func(length(x_func)) + x_func(1)));
+    x_preset_optimal(i) = 0.5 * ((x_func(length(x_func)) - x_func(1))*cos((2*i + 1)/(2*(length(x_preset) + 1))*pi) + (x_func(length(x_func)) + x_func(1)));
 end
 y_preset_optimal = F(x_preset_optimal);
 
