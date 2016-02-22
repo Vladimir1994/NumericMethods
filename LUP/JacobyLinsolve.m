@@ -18,7 +18,7 @@ function [x, count] = JacobyLinsolve(A, b)
     U = zeros(n);
     
     for i = 1:n
-        U(i, (i + 1):n) = A(i,(i + 1):n);
+        U(i, (i + 1):n) = A(i, (i + 1):n);
     end
     
     L = zeros(n);
