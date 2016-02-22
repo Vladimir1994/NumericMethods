@@ -5,8 +5,8 @@ function [x, y1, y2] = Runge_Kutta_4_auto( A, B, ksi, xk, epsilon)
     s = 4;
     y0 = [B * pi, A * pi];
     delta = (1 / pi) ^ (s + 1) + sqrt(A ^ 2 * y0(2) * y0(2) ...
-        + B ^ 2 * y0(1) * y0(1))^(s + 1);
-    h = (epsilon / delta)^(1 / (s + 1));
+        + B ^ 2 * y0(1) * y0(1)) ^ (s + 1);
+    h = (epsilon / delta) ^ (1 / (s + 1));
     H = h;
     b2 = 1. / (2. * ksi);
     b1 = 1 - b2;
@@ -24,9 +24,9 @@ function [x, y1, y2] = Runge_Kutta_4_auto( A, B, ksi, xk, epsilon)
         [y1_h, y2_h] = nextYorder4(y1(count - 1), y2(count - 1), ...
             A, -B, h, ksi, b1, b2);     
         [y1_h_half_1, y2_h_half_1] = nextYorder4(y1(count - 1), ...
-            y2(count - 1), A, -B, h/2, ksi, b1, b2);  
+            y2(count - 1), A, -B, h / 2, ksi, b1, b2);  
         [y1_h_half_2, y2_h_half_2] = nextYorder4(y1_h_half_1, ...
-            y2_h_half_1, A, -B, h/2, ksi, b1, b2);
+            y2_h_half_1, A, -B, h / 2, ksi, b1, b2);
         
         r = ([y1_h_half_2; y2_h_half_2] - [y1_h; y2_h]) / (1 - 2 ^ (-s));
         r_norm = sqrt(sum(r .^ 2));
