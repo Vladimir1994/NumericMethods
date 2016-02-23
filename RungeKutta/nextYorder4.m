@@ -9,8 +9,5 @@ function [y1, y2] = nextYorder4(yPrev, y2Prev, A, B, h, ksi, b1, b2)
     k42 = h * B * (yPrev + k31);
     y1 = yPrev + (1 / 6) * (k11 + 2 * k21 + 2 * k31 + k41);
     y2 = y2Prev + (1 / 6) * (k12 + 2 * k22 + 2 * k32 + k42);
-    
-    global CountF4;
-    CountF4 = CountF4 + 4;
 end
 
