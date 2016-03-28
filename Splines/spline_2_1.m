@@ -4,10 +4,10 @@ function [x_result, y_result] = spline_2_1(x, y, start_d)
     end
     A = zeros(3 * (length(x) - 1));
     for i = 1:3:(length(A) - 2)
-        A(i, i) = x(fix(i/3) + 1)^2;
+        A(i, i) = x(fix(i / 3) + 1) ^ 2;
         A(i, i + 1) = x(fix(i / 3) + 1);
         A(i, i + 2) = 1;
-        A(i + 1, i) = x(fix(i / 3) + 2)^2;
+        A(i + 1, i) = x(fix(i / 3) + 2) ^ 2;
         A(i + 1, i + 1) = x(fix(i / 3) + 2);
         A(i + 1, i + 2) = 1;
     end
@@ -28,10 +28,12 @@ function [x_result, y_result] = spline_2_1(x, y, start_d)
     b(3) = start_d;
     coeffs  = linsolve(A, b);
     x_result = x(1):.01:x(2);
-    y_result = coeffs(1) .* x_result.^2 + coeffs(2) .* x_result + coeffs(3);
+    y_result = coeffs(1) .* x_result .^ 2 + coeffs(2) ...
+        .* x_result + coeffs(3);
     for i = 2:length(x) - 1
         xx = x(i):.01:x(i + 1);
-        yy = coeffs(3 * i - 2) .* xx.^2 + coeffs(3*i - 1) .* xx + coeffs(3 * i);
+        yy = coeffs(3 * i - 2) .* xx .^ 2 + coeffs(3*i - 1) ...
+            .* xx + coeffs(3 * i);
         x_result = [x_result xx];
         y_result = [y_result yy];
     end
