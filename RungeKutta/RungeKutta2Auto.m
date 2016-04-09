@@ -24,7 +24,7 @@ function [x, y1, y2] = RungeKutta2Auto(A, B, ksi, xk, epsilon)
         [y1_h_half_2, y2_h_half_2] = nextYorder2(y1_h_half_1, ...
             y2_h_half_1, A, -B, h / 2, ksi, b1, b2);
         
-        r = ([y1_h_half_2; y2_h_half_2] - [y1_h; y2_h])/(1 - 2 ^ (-s));
+        r = ([y1_h_half_2; y2_h_half_2] - [y1_h; y2_h] )/ (1 - 2 ^ (-s));
         r_norm = sqrt(sum(r.^2));
         
         if (r_norm > epsilon * 2 ^ s)
