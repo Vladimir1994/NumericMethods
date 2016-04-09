@@ -7,7 +7,7 @@ ksi = 1 / 11;
 xk = 10;
 epsilon = 1e-6;
 
-[x, y1, y2] = Runge_Kutta_2_auto(A, B, ksi, xk, epsilon);
+[x, y1, y2] = RungeKutta2Auto(A, B, ksi, xk, epsilon);
 
 y0 = [B * pi, A * pi];
 [T, Y] = ode45(@diffeq, x, y0);

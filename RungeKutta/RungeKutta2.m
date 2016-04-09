@@ -1,4 +1,4 @@
-function [x1, y1, y2, h] = Runge_Kutta_2(A, B, ksi, xk, epsilon) 
+function [x1, y1, y2, h] = RungeKutta2(A, B, ksi, xk, epsilon) 
     h = pi;
     s2 = 3;
     R = -1;

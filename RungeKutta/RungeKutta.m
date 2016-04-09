@@ -1,4 +1,4 @@
-function [x, y1, y2] = Runge_Kutta(A, B, ksi, xk, h, method)
+function [x, y1, y2] = RungeKutta(A, B, ksi, xk, h, method)
     b2 = 1. / (2. * ksi);
     b1 = 1 - b2;
     x = 0;
