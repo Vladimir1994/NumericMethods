@@ -9,26 +9,34 @@ function [x_result, y_result] = appr_orth(x, y, n)
         alpha_num = 0;
         alpha_den = 0;
         for i = 1:m
-            alpha_num = alpha_num + x(i) .* q(j - 1, fix(-x(1)*100 + 100*(x(i)) + 1)).^2;
-            alpha_den = alpha_den + q(j - 1, fix(-x(1) * 100 + 100*(x(i)) + 1)).^2;
+            alpha_num = alpha_num + x(i) .* ...
+                q(j - 1, fix(-x(1)*100 + 100*(x(i)) + 1)).^2;
+            alpha_den = alpha_den + ...
+                q(j - 1, fix(-x(1) * 100 + 100*(x(i)) + 1)).^2;
         end
         alpha = alpha_num / alpha_den;
         beta_num = 0;
         beta_den = 0;
         for i = 1:m
-            beta_num = beta_num + x(i) * q(j - 1, fix(-x(1) * 100 + 100 * (x(i)) + 1)) .* q(j - 2, fix(-x(1) * 100 + 100 * (x(i)) + 1));
-            beta_den = beta_den + q(j - 2, fix(-x(1) * 100 + 100 * (x(i)) + 1)).^2;
+            beta_num = beta_num + x(i) * q(j - 1, fix(-x(1) ...
+                * 100 + 100 * (x(i)) + 1)) ...
+                .* q(j - 2, fix(-x(1) * 100 + 100 * (x(i)) + 1));
+            beta_den = beta_den ...
+                + q(j - 2, fix(-x(1) * 100 + 100 * (x(i)) + 1)).^2;
         end
         beta = beta_num / beta_den;
-        q(j, :) = x_result .* q(j - 1, :) - alpha .* q(j - 1, :) - beta .* q(j - 2, :);
+        q(j, :) = x_result .* q(j - 1, :) ...
+            - alpha .* q(j - 1, :) - beta .* q(j - 2, :);
     end
     a = zeros(n, 1);
     for j = 1:n
         a_num = 0;
         a_den = 0;
         for i = 1:m
-            a_num = a_num + q(j, fix(-x(1) * 100 + 100 * (x(i)) + 1)) .* y(i);
-            a_den = a_den + q(j, fix(-x(1) * 100 + 100 * (x(i)) + 1)).^2;
+            a_num = a_num ...
+                + q(j, fix(-x(1) * 100 + 100 * (x(i)) + 1)) .* y(i);
+            a_den = a_den ...
+                + q(j, fix(-x(1) * 100 + 100 * (x(i)) + 1)).^2;
         end
         a(j) = a_num / a_den;
     end
