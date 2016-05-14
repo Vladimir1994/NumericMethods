@@ -1,5 +1,5 @@
 function [ summ ] = NewtonCotes(x_2, l_point, r_point, int_cnt, b)
-	dx = abs(r_point - l_point) / (int_cnt - 1);
+    dx = abs(r_point - l_point) / (int_cnt - 1);
     points = zeros(int_cnt, 1);
     for i = 1:int_cnt
         points(i) = l_point + dx * (i - 1);

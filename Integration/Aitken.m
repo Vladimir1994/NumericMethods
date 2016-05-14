@@ -16,9 +16,8 @@ function [m_next, H, S] = Aitken(accuracy, a, b, beta, IntMethod)
     cnt = 1;
     
     while(abs(m - m_next) > accuracy) 
-        H1 = H2;
         H2 = H3;
-        H3 = H2 * q;
+        H3 = H3 * q;
 
         SH1 = SH2;
         SH2 = SH3;
