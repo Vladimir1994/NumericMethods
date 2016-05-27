@@ -11,7 +11,7 @@ function [x, y1, y2] = RungeKutta2Auto(A, B, ksi, xk, epsilon)
     y2 = A * pi;   
     count = 2;
     
-    while (x < xk)
+    while (x(end) < xk)
         
         if(x(end) + h > xk)
             h = xk - x(end);
